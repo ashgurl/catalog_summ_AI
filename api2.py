@@ -226,7 +226,7 @@ def get_multiple_summaries(request: BulkProductRequest):
                 model="llama-3.1-8b-instant",
                 messages=[{"role": "user", "content": prompt}],
                 response_model=AIProductSummary,
-                temperature=0.3, 
+                temperature=0, 
             )
             
             final_product_data = {

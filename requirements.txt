@@ -5,3 +5,4 @@ groq
 instructor
 httpx
 pymongo
+certifi

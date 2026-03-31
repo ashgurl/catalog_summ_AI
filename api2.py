@@ -175,7 +175,13 @@ def clean_payload(data):
 def health_check():
     return {"status": "Catalog Summarizer API is LIVE and ready for requests!"}
 
-# The Main Frontend Endpoint
+# The Main Frontend Endpoints
+@app.get("/api/summaries")
+def get_summaries_by_query(product_ids: str):
+    # product_ids comes in as comma-separated: ?product_ids=ABLM1A24004,ABLM1A24006
+    pid_list = [p.strip().upper() for p in product_ids.split(",") if p.strip()]
+    request = BulkProductRequest(product_ids=pid_list)
+    return get_multiple_summaries(request)
 @app.post("/api/summaries")
 def get_multiple_summaries(request: BulkProductRequest):
     print(f"✅ Received request for: {request.product_ids}")

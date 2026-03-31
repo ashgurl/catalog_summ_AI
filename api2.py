@@ -178,6 +178,7 @@ def health_check():
 # The Main Frontend Endpoint
 @app.post("/api/summaries")
 def get_multiple_summaries(request: BulkProductRequest):
+    print(f"✅ Received request for: {request.product_ids}")
     response_data = {}
     conn = sqlite3.connect("se_product_cache.db")
     c = conn.cursor()

@@ -12,6 +12,8 @@ from groq import Groq
 from typing import List
 from fastapi.middleware.cors import CORSMiddleware
 
+app = FastAPI(title="Product Catalog and Brochure Extractor")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
